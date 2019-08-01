@@ -1,22 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace TerrainGeneration {
-    [CustomEditor (typeof (TerrainGenerator))]
-    public class TerrainGeneratorEditor : Editor {
-        TerrainGenerator terrainGen;
+namespace TerrainGeneration
+{
+    [CustomEditor(typeof(TerrainGenerator))]
+    public class TerrainGeneratorEditor : Editor
+    {
+        private TerrainGenerator terrainGen;
 
-        public override void OnInspectorGUI () {
-            DrawDefaultInspector ();
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
 
-            if (GUILayout.Button ("Refresh")) {
-                terrainGen.Generate ();
-            }
+            if (GUILayout.Button("Refresh")) terrainGen.Generate();
         }
 
-        void OnEnable () {
+        private void OnEnable()
+        {
             terrainGen = (TerrainGenerator) target;
         }
     }

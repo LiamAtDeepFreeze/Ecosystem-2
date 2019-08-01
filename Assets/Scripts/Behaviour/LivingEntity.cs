@@ -1,18 +1,24 @@
-﻿using UnityEngine;
+﻿using Datatypes;
+using UnityEngine;
 
-public class LivingEntity : MonoBehaviour {
+namespace Behaviour
+{
+    public class LivingEntity : MonoBehaviour
+    {
+        public Coord coord;
 
-    public Coord coord;
-    //
-    [HideInInspector]
-    public int mapIndex;
-    [HideInInspector]
-    public Coord mapCoord;
+        protected bool dead;
 
-    protected bool dead;
+        [HideInInspector]
+        public Coord mapCoord;
 
-    public virtual void Init (Coord coord) {
-        this.coord = coord;
-        transform.position = Environment.tileCentres[coord.x, coord.y];
+        [HideInInspector]
+        public int mapIndex;
+
+        public virtual void Init(Coord coord)
+        {
+            this.coord = coord;
+            transform.position = Environments.Environment.tileCentres[coord.x, coord.y];
+        }
     }
 }

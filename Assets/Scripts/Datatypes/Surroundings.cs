@@ -1,4 +1,11 @@
-﻿public class Surroundings {
-    public Coord nearestWaterTile;
-    public LivingEntity nearestFoodSource;
+﻿using Behaviour;
+
+namespace Datatypes
+{
+    public class Surroundings
+    {
+        public LivingEntity nearestFoodSource;
+        public Coord nearestWaterTile;
+        public Coord burrow;
+    }
 }
