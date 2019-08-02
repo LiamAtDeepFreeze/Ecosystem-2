@@ -15,7 +15,8 @@ namespace Behaviour
             GoingToFood,
             GoingToWater,
             Eating,
-            Drinking
+            Drinking,
+            Decaying
         }
 
         public enum Diet
@@ -35,7 +36,6 @@ namespace Behaviour
         public CreatureAction currentAction;
 
         [Header("Settings")]
-        public string id;
         public Diet diet;
 
         private readonly float drinkDuration = 6;
@@ -70,9 +70,6 @@ namespace Behaviour
         private readonly float timeToDeathByThirst = 200;
         protected Coord waterTarget;
 
-        // Callbacks
-        public Action onDeath;
-
         public override void Init(Coord startingCoord)
         {
             base.Init(startingCoord);
@@ -83,15 +80,25 @@ namespace Behaviour
             ChooseNextAction();
         }
 
-        protected virtual void Update()
+        public override void Update()
         {
+            base.Update();
+
+            if (dead)
+            {
+                currentAction = CreatureAction.Decaying;
+
+                //Do decaying extra stuff here
+                return;
+            }
+
             // Increase hunger and thirst over time
             hunger += Time.deltaTime * 1 / timeToDeathByHunger;
             thirst += Time.deltaTime * 1 / timeToDeathByThirst;
 
             if (hunger >= timeToDeathByHunger || thirst >= timeToDeathByThirst)
             {
-                Die();
+                Die(hunger >= timeToDeathByHunger ? "Hunger" : "Thirst");
             }
 
             // Animate movement. After moving a single tile, the animal will be able to choose its next action
@@ -274,12 +281,6 @@ namespace Behaviour
                 moveTime = 0;
                 ChooseNextAction();
             }
-        }
-
-        protected virtual void Die()
-        {
-            onDeath?.Invoke();
-            StatsTracker.RemoveEntity(id);
         }
 
         private void OnDrawGizmosSelected()

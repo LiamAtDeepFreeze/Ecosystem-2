@@ -65,6 +65,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -121,3 +122,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3fa69f2b3ead4c90bd4ed7635a7df5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coord:
+    x: 0
+    y: 0
+    z: 0
+  id: Plant
+  decayTimer: 10
+  mapCoord:
+    x: 0
+    y: 0
+    z: 0
+  mapIndex: 0

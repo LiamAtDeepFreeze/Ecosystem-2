@@ -68,6 +68,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -91,7 +92,7 @@ GameObject:
   - component: {fileID: 8655578893242061405}
   - component: {fileID: 7937752003893399514}
   m_Layer: 0
-  m_Name: Bunny
+  m_Name: Bunny 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,3 +125,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa81e76bbb0534ab4a7eac5974e8565f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coord:
+    x: 0
+    y: 0
+    z: 0
+  id: Bunny
+  mapCoord:
+    x: 0
+    y: 0
+    z: 0
+  mapIndex: 0
+  currentAction: 0
+  diet: 0
+  hunger: 0
+  thirst: 0
